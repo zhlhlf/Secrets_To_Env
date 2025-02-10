@@ -23,9 +23,9 @@ runs:
         filename="Secrets_To_Env.json"
         data='${{ inputs.secrets_json }}'
         echo "$data" > $filename
-        cat $filename
+        #cat $filename
 
-        jq -r 'to_entries[] | "\(.key)=\(.value)"' $filename > ${{ inputs.file_name }}
+        jq -r 'to_entries[] | "\(.key)=\"\(.value)"\"' $filename > ${{ inputs.file_name }}
         cat ${{ inputs.file_name }}
         rm -r $filename
 
