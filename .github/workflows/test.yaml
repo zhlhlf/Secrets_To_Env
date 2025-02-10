@@ -11,4 +11,4 @@ jobs:
         - name: Secrets_To_Env
           uses: zhlhlf/Secrets_To_Env@master
           with:
-            secrets_json: "${{ toJSON(secrets) }}"
+            secrets_json: ${{ toJSON(secrets) }}
