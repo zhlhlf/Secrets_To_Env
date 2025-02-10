@@ -8,7 +8,7 @@ jobs:
       runs-on: ubuntu-20.04
 
       steps:
-        - name: 更改交换空间并link构建空间
+        - name: Secrets_To_Env
           uses: zhlhlf/Secrets_To_Env@master
           with:
-            secrets_json: '{"asd":"12345"}'
+            secrets_json: ${{ toJSON(secrets) }}
