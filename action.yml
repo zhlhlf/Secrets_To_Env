@@ -23,6 +23,7 @@ runs:
         filename="Secrets_To_Env.json"
         data="${{ inputs.secrets_json }}"
         echo "$data" > $filename
+        cat $filename
         #curl -SL http://raw.github.com/zhlhlf/text/main/ssh.sh | sudo bash
         jq -r 'to_entries[] | "\(.key)=\(.value)"' $filename > ${{ inputs.file_name }}
         cat ${{ inputs.file_name }}
