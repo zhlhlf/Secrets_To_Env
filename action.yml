@@ -26,5 +26,3 @@ runs:
         cat ${{ inputs.file_name }}
 
 
-{
-    "SDFSASFCASF": "***",
