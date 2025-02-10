@@ -1,0 +1,18 @@
+name: 'Secrets_To_Env'
+description: 'Repository Secrets_To_Env'
+branding:
+  icon: 'crop'
+  color: 'orange'
+inputs:
+  secrets_json:
+    description: 'secrets_json'
+    required: true
+    default: '{}'
+
+runs:
+  using: "composite"
+  steps:
+    - name: start run
+      shell: bash
+      run: |
+        echo ${{ inputs.secrets_json }}
