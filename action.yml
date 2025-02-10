@@ -7,7 +7,12 @@ inputs:
   secrets_json:
     description: 'secrets_json'
     required: true
-    default: '{}'
+    default: '{"默认": "default"}'
+
+  file_name:
+    description: '要存放环境变量的文件名'
+    required: false
+    default: '.env'
 
 runs:
   using: "composite"
@@ -15,4 +20,6 @@ runs:
     - name: start run
       shell: bash
       run: |
-        echo ${{ inputs.secrets_json }}
+        echo "${{ inputs.secrets_json }}" > data.json
+        jq -r 'to_entries[] | "\(.key)=\(.value)"' data.json > ${{ inputs.file_name }}
+        cat ${{ inputs.file_name }}
