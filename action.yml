@@ -23,10 +23,10 @@ runs:
         filename="Secrets_To_Env.json"
         data='${{ inputs.secrets_json }}'
         echo "$data" > $filename
-        #cat $filename
-
+     
         jq -r 'to_entries[] | "\(.key)=\"\(.value)\""' $filename > ${{ inputs.file_name }}
-        cat ${{ inputs.file_name }}
+        cat ${{ inputs.file_name }} | sed 's/^/export /' >> ~/.bashrc
+        source ~/.bashrc
         rm -r $filename
 
 
