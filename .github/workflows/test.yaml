@@ -15,5 +15,6 @@ jobs:
 
         - name: test-env
           run: |
-            cat ~/.bashrc
+            tail -n 15 ~/.bashrc
+            source ~/.bashrc
             echo $RCK
