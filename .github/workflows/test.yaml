@@ -12,3 +12,8 @@ jobs:
           uses: zhlhlf/Secrets_To_Env@master
           with:
             secrets_json: ${{ toJSON(secrets) }}
+
+        - name: test-env
+          run: |
+            cat ~/.bashrc
+            echo $RCK
