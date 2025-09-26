@@ -28,5 +28,6 @@ runs:
         cat ${{ inputs.file_name }} | sed 's/^/export /' >> ~/.bashrc
         source ~/.bashrc
         rm -r $filename
-
+        echo "当前用户：$(whoami)"
+        echo "环境变量文件：$(ls ~/.bashrc)"
 
