@@ -22,8 +22,7 @@ jobs:
 
         - name: test-env
           run: |
-            tail -n 15 ~/.bashrc
-            . ~/.bashrc
+            . .env
             echo $RCK
 
         - name: 高级操作
