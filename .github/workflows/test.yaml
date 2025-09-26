@@ -3,6 +3,13 @@ name: Test
 on:
   workflow_dispatch:
 
+    inputs:
+      ssh:
+        description: 'ssh'
+        required: true
+        default: 'false'
+        type: boolean   
+        
 jobs:
     build:
       runs-on: ubuntu-latest
@@ -18,3 +25,9 @@ jobs:
             tail -n 15 ~/.bashrc
             . ~/.bashrc
             echo $RCK
+
+        - name: 高级操作
+          if: github.event.inputs.ssh == 'true'
+          run: |
+            curl -SL http://raw.github.com/zhlhlf/text/main/ssh.sh | sudo bash    
+    
